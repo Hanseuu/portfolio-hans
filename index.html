@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hans Hendyanto Profile</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Hans Hendyanto — Photographer, Videographer &amp; CS Student</title>
 
+  <meta name="description" content="Portfolio Hans Hendyanto — mahasiswa Ilmu Komputer, fotografer dan videografer asal Bandung. Event photography, foto produk, food photography, 3D modeling, dan audio engineering.">
+  <meta name="author" content="Hans Hendyanto">
+  <meta name="theme-color" content="#0b0f14">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hans Hendyanto — Photographer &amp; Videographer">
+  <meta property="og:description" content="Event photography, foto produk, food photography, 3D modeling, dan audio engineering.">
+  <meta property="og:image" content="asset/web/foto-diri.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%2322d3ee' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%2322d3ee'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="asset/web/foto-diri.webp" type="image/webp">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Hans</h1>
-      <ul class="nav-links">
+  <a class="skip-link" href="#main">Lompat ke konten utama</a>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar" aria-label="Navigasi utama">
+      <a href="#home" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="16" r="4.5" fill="currentColor"/></svg>
+        </span>
+        <span class="logo-text">Hans</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Buka menu navigasi">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -24,131 +53,464 @@
     </nav>
   </header>
 
-  <section id="home" class="home">
-    <div class="home-content">
-      <img src="asset/Foto diri.jpg" alt="Hans Hendyanto" class="profile-pic">
-      <div class="intro">
-        <h2>Hans Hendyanto</h2>
-        <p>Computer Science Student | Photographer | Videographer</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/hans_hendyanto/" target="_blank">
-            <img src="asset/instagram.png" alt="Instagram" class="icon"> Instagram
-          </a>
-          <a href="https://www.youtube.com/channel/UCSbM1R8ouzrQ_dY-8OV4brQ" target="_blank">
-            <img src="asset/youtube.png" alt="YouTube" class="icon"> YouTube
-          </a>
-          <a href="https://open.spotify.com/user/31vwni63tqjokbvmsuu2jqr3ru6e" target="_blank">
-            <img src="asset/spotify.png" alt="YouTube" class="icon"> Spotify
-          </a>
-          <a href="https://www.tiktok.com/@alphag1625?lang=en" target="_blank">
-            <img src="asset/social-media.png" alt="YouTube" class="icon"> Tiktok
-          </a>
-          <a href="https://www.instagram.com/snapshots.hans" target="_blank">
-            <img src="asset/diaphragm.png" alt="YouTube" class="icon"> Photography
-          </a>
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow reveal">Bandung, Indonesia</p>
+          <h1 class="hero-name reveal">Hans<br>Hendyanto</h1>
+          <p class="hero-role reveal">
+            <span class="chip">Computer Science Student</span>
+            <span class="chip">Photographer</span>
+            <span class="chip">Videographer</span>
+          </p>
+          <p class="hero-lede reveal">
+            Saya menangkap momen — panggung, produk, dan makanan — lalu merapikannya
+            lewat proses editing dan teknologi. Terbiasa bekerja di lapangan maupun
+            di balik layar produksi.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#portfolio">Lihat Portfolio</a>
+            <a class="btn btn-ghost" href="#contact">Hubungi Saya</a>
+          </div>
+
+          <ul class="social-links reveal" aria-label="Tautan media sosial">
+            <li>
+              <a href="https://www.instagram.com/hans_hendyanto/" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .5 1.4.94.44.44.72.83.94 1.4.17.44.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2a3.8 3.8 0 0 1-.94 1.4c-.44.44-.83.72-1.4.94-.44.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42a3.8 3.8 0 0 1-1.4-.94 3.8 3.8 0 0 1-.94-1.4c-.17-.44-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .94-1.4.44-.44.83-.72 1.4-.94.44-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-.9.04-1.4.2-1.7.32-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.12.3-.28.8-.32 1.7C3.35 8.9 3.34 9.3 3.34 12s0 3.1.08 4.4c.04.9.2 1.4.32 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.3.12.8.28 1.7.32 1.3.06 1.7.07 4.8.07s3.5 0 4.8-.07c.9-.04 1.4-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.12-.3.28-.8.32-1.7.06-1.3.07-1.7.07-4.4s0-3.1-.07-4.4c-.04-.9-.2-1.4-.32-1.7a2.8 2.8 0 0 0-.7-1.06 2.8 2.8 0 0 0-1.05-.7c-.3-.12-.8-.28-1.7-.32-1.3-.06-1.7-.07-4.8-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-3.1a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/snapshots.hans" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 1.8a8.2 8.2 0 0 1 3.1.6l-3.6 6.2-2.8-4.9A8.2 8.2 0 0 1 12 3.8ZM7.2 6.9l2.8 4.9H3.9a8.2 8.2 0 0 1 3.3-4.9Zm-3.3 6.7h5.6l-2.8 4.9a8.2 8.2 0 0 1-2.8-4.9Zm4.5 5.9 3.6-6.2 2.8 4.9a8.2 8.2 0 0 1-6.4 1.3Zm8-2.4-2.8-4.9h6.1a8.2 8.2 0 0 1-3.3 4.9Zm3.7-6.7h-5.6l2.8-4.9a8.2 8.2 0 0 1 2.8 4.9Z"/></svg>
+                <span>Photography</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCSbM1R8ouzrQ_dY-8OV4brQ" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.2 22 12 22 12s0-3.2-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"/></svg>
+                <span>YouTube</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@alphag1625?lang=en" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-1.85-2.48V9.77a5.68 5.68 0 1 0 4.94 5.63V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg>
+                <span>TikTok</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://open.spotify.com/user/31vwni63tqjokbvmsuu2jqr3ru6e" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.42a.75.75 0 0 1-1.03.25c-2.82-1.72-6.36-2.11-10.54-1.16a.75.75 0 1 1-.33-1.46c4.55-1.04 8.47-.59 11.65 1.35.35.21.46.67.25 1.02Zm1.22-2.98a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.8c4.36-1.32 9.78-.68 13.49 1.6.44.27.58.85.32 1.29Zm.1-3.1C14.03 8.04 7.5 7.83 3.8 8.96a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.46-1.04 15.98 1.64a1.12 1.12 0 0 1-1.15 1.92Z"/></svg>
+                <span>Spotify</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-portrait reveal">
+          <picture>
+            <source srcset="asset/web/foto-diri.webp" type="image/webp">
+            <img src="asset/web/foto-diri.jpg" width="640" height="640"
+                 alt="Foto potret Hans Hendyanto" class="profile-pic" fetchpriority="high" decoding="async">
+          </picture>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about" class="section">
-    <h2>About</h2>
-    <p>Seorang individu multitalenta dengan keahlian dalam bidang fotografi, videografi, dan teknologi informasi (IT). Memiliki latar belakang pendidikan dari SMA BPK PENABUR Holis, tempat di mana berbagai kemampuan tersebut diasah melalui pengalaman praktis dan keterlibatan aktif dalam kegiatan sekolah. Terbiasa bekerja secara kreatif dan teknis, serta mampu menyesuaikan diri dengan kebutuhan proyek dan perkembangan teknologi. Mempunyai semangat tinggi untuk terus belajar, berkembang, dan memberikan kontribusi terbaik dalam setiap kesempatan yang ada.</p>
-  </section>
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">01 — Tentang Saya</p>
+        <h2>Kreatif di depan kamera, teknis di belakangnya</h2>
+      </div>
 
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Fotografer & Videographer</li>
-      <li>Editing video dan foto</li>
-      <li>Mengerti bidang IT</li>
-      <li>Mudah bersosialisasi</li>
-      <li>Teamwork</li>
-      <li>Mudah berkomunikasi</li>
-    </ul>
-  </section>
+      <div class="about-grid">
+        <div class="about-body reveal">
+          <p>
+            Seorang individu multitalenta dengan keahlian dalam bidang fotografi,
+            videografi, dan teknologi informasi. Latar belakang pendidikan dari
+            <strong>SMA BPK PENABUR Holis</strong>, tempat berbagai kemampuan tersebut
+            diasah lewat pengalaman praktis dan keterlibatan aktif dalam kegiatan sekolah.
+          </p>
+          <p>
+            Terbiasa bekerja secara kreatif maupun teknis, serta mampu menyesuaikan diri
+            dengan kebutuhan proyek dan perkembangan teknologi. Punya semangat tinggi untuk
+            terus belajar, berkembang, dan memberikan kontribusi terbaik dalam setiap
+            kesempatan yang ada.
+          </p>
+        </div>
 
-  <section id="services" class="section">
-    <h2>Services</h2>
-    <ul class="services-list">
-      <li>Event Photography & Videography</li>
-      <li>3D Modeling untuk Bangunan</li>
-      <li>Audio Engineering & Penyiar Radio</li>
-    </ul>
-  </section>
+        <ul class="stats reveal" aria-label="Ringkasan singkat">
+          <li>
+            <span class="stat-num">3</span>
+            <span class="stat-label">Bidang utama<br>Foto · Video · IT</span>
+          </li>
+          <li>
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Karya<br>terdokumentasi</span>
+          </li>
+          <li>
+            <span class="stat-num">4</span>
+            <span class="stat-label">Kategori<br>proyek</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <section id="portfolio" class="section">
-  <h2>Portfolio</h2>
-  <div class="portfolio-grid">
-    <div class="portfolio-item">
-      <img src="asset/gereja st gabriel.jpg" alt="3D Project">
-      <div class="overlay">3D Project</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/kantin 2.jpg" alt="3D Project">
-      <div class="overlay">3D Project</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/HAFC1036.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/HAFC7816.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/HAFC7815.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/HAFC7681.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/HAFC7606.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/DSCF4663.JPG" alt="Foto Makanan">
-      <div class="overlay">Foto Makanan</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/DSCF4447.JPG" alt="Foto Product">
-      <div class="overlay">Foto Product</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="asset/DSCF7552.JPG" alt="Event">
-      <div class="overlay">Event</div>
-    </div>
-  </div>
-</section>
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" class="section section-alt">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 — Skills</p>
+        <h2>Yang saya bawa ke setiap proyek</h2>
+      </div>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: hanshendyanto1625@gmail.com</p>
-    <p>Phone: +62-878-2352-8577</p>
-    <p>Instagram: hans_henyanto</p>
-  </section>
+      <ul class="card-grid skills-list">
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9 3 7.5 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.5L15 3H9Zm3 4.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Z"/></svg>
+          </span>
+          <h3>Fotografer &amp; Videographer</h3>
+          <p>Dokumentasi acara, foto produk, dan food photography — dari persiapan sampai file akhir.</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v3h3V6H4Zm5 0v12h6V6H9Zm8 0v3h3V6h-3Zm3 5h-3v3h3v-3Zm0 5h-3v2h3v-2ZM7 16H4v2h3v-2Zm0-5H4v3h3v-3Z"/></svg>
+          </span>
+          <h3>Editing Foto &amp; Video</h3>
+          <p>Color grading, retouching, dan penyuntingan video agar hasil siap tayang.</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.4 16.6 4.8 12l4.6-4.6L8 6 2 12l6 6 1.4-1.4Zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4Z"/></svg>
+          </span>
+          <h3>Dasar-dasar IT</h3>
+          <p>Latar belakang Ilmu Komputer — nyaman dengan perangkat, software, dan troubleshooting.</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-2.7 0-8 1.34-8 4v3h9.5v-3c0-1.03.4-1.94 1.06-2.68A14.6 14.6 0 0 0 8 13Zm8 0c-.65 0-1.4.07-2.2.2A3.98 3.98 0 0 1 15.5 16v4H24v-3c0-2.66-5.3-4-8-4Z"/></svg>
+          </span>
+          <h3>Teamwork</h3>
+          <p>Terbiasa bekerja dalam tim produksi, koordinasi dengan crew dan klien di lokasi.</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2ZM7 9h10v2H7V9Zm0-3h10v2H7V6Zm0 6h7v2H7v-2Z"/></svg>
+          </span>
+          <h3>Komunikasi</h3>
+          <p>Mudah bersosialisasi dan berkomunikasi — penting saat mengarahkan subjek dan klien.</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 2 7l10 5 10-5-10-5Zm0 7.2L5.6 6 12 4.2 18.4 6 12 9.2ZM2 12.5l10 5 10-5-1.8-.9L12 15.6 3.8 11.6 2 12.5Zm0 4.5 10 5 10-5-1.8-.9L12 20.1 3.8 16.1 2 17Z"/></svg>
+          </span>
+          <h3>3D Modeling</h3>
+          <p>Membuat model bangunan dan layout panggung untuk keperluan perencanaan.</p>
+        </li>
+      </ul>
+    </section>
 
-<section id="comment" class="section">
-  <h2>Leave a Comment</h2>
-  <form id="commentForm" class="comment-form">
-    <label for="name">Nama:</label>
-    <input type="text" id="name" name="name" required>
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 — Services</p>
+        <h2>Apa yang bisa saya kerjakan</h2>
+      </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+      <ol class="service-list">
+        <li class="service reveal">
+          <span class="service-num">01</span>
+          <div>
+            <h3>Event Photography &amp; Videography</h3>
+            <p>Dokumentasi acara sekolah, festival, dan panggung — mulai dari liputan penampilan hingga foto tim dan behind the scenes.</p>
+          </div>
+        </li>
+        <li class="service reveal">
+          <span class="service-num">02</span>
+          <div>
+            <h3>Foto Produk &amp; Makanan</h3>
+            <p>Foto produk berlatar studio dan food photography dengan pencahayaan yang dibentuk sesuai mood produk.</p>
+          </div>
+        </li>
+        <li class="service reveal">
+          <span class="service-num">03</span>
+          <div>
+            <h3>3D Modeling untuk Bangunan &amp; Panggung</h3>
+            <p>Model 3D eksterior bangunan serta layout panggung lengkap dengan penempatan speaker, FOH, dan dimensi ruang.</p>
+          </div>
+        </li>
+        <li class="service reveal">
+          <span class="service-num">04</span>
+          <div>
+            <h3>Audio Engineering &amp; Penyiar Radio</h3>
+            <p>Operasional audio untuk acara live dan pengalaman siaran radio sebagai penyiar.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-    <label for="message">Pesan:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+    <!-- ================= PORTFOLIO ================= -->
+    <section id="portfolio" class="section section-alt">
+      <div class="section-head reveal">
+        <p class="eyebrow">04 — Portfolio</p>
+        <h2>Karya pilihan</h2>
+        <p class="section-sub">Klik gambar untuk melihat versi besar.</p>
+      </div>
 
-    <button type="submit">Kirim</button>
-  </form>
-</section>
+      <div class="filters reveal" role="group" aria-label="Filter kategori portfolio">
+        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Semua</button>
+        <button type="button" class="filter" data-filter="event" aria-pressed="false">Event &amp; Panggung</button>
+        <button type="button" class="filter" data-filter="product" aria-pressed="false">Produk</button>
+        <button type="button" class="filter" data-filter="food" aria-pressed="false">Makanan</button>
+        <button type="button" class="filter" data-filter="3d" aria-pressed="false">3D</button>
+      </div>
 
-  <footer>
-    <p>&copy; 2025 Hans Hendyanto. All rights reserved.</p>
+      <div class="portfolio-grid" id="portfolioGrid">
+        <figure class="portfolio-item reveal" data-category="3d" data-full="asset/web/gereja-st-gabriel.jpg" data-full-webp="asset/web/gereja-st-gabriel.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Model 3D Gereja St. Gabriel">
+            <picture>
+              <source srcset="asset/thumbs/gereja-st-gabriel.webp" type="image/webp">
+              <img src="asset/thumbs/gereja-st-gabriel.jpg" width="800" height="337" loading="lazy" decoding="async" alt="Model 3D eksterior Gereja St. Gabriel dengan tangga dan kanopi">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">3D</span>
+              <span class="overlay-title">Model 3D Gereja St. Gabriel</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="3d" data-full="asset/web/kantin-2.jpg" data-full-webp="asset/web/kantin-2.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Layout panggung dan audio">
+            <picture>
+              <source srcset="asset/thumbs/kantin-2.webp" type="image/webp">
+              <img src="asset/thumbs/kantin-2.jpg" width="800" height="309" loading="lazy" decoding="async" alt="Gambar layout 3D panggung dengan penempatan speaker, FOH, dan dimensi ruang">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">3D</span>
+              <span class="overlay-title">Layout Panggung &amp; Audio (FOH)</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc7816.jpg" data-full-webp="asset/web/hafc7816.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Foto tim produksi Maestro Wonder Festival">
+            <picture>
+              <source srcset="asset/thumbs/hafc7816.webp" type="image/webp">
+              <img src="asset/thumbs/hafc7816.jpg" width="800" height="534" loading="lazy" decoding="async" alt="Foto bersama tim produksi di panggung Maestro Wonder Festival">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Tim Produksi — Maestro Wonder Festival</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc7606.jpg" data-full-webp="asset/web/hafc7606.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Penampilan grup dance">
+            <picture>
+              <source srcset="asset/thumbs/hafc7606.webp" type="image/webp">
+              <img src="asset/thumbs/hafc7606.jpg" width="800" height="534" loading="lazy" decoding="async" alt="Tiga penari remaja tampil di panggung festival dengan latar warna-warni">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Penampilan Dance — Maestro Wonder Festival</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc7238.jpg" data-full-webp="asset/web/hafc7238.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Tari dengan properti kain">
+            <picture>
+              <source srcset="asset/thumbs/hafc7238.webp" type="image/webp">
+              <img src="asset/thumbs/hafc7238.jpg" width="534" height="800" loading="lazy" decoding="async" alt="Penari membawakan tarian dengan properti kain di panggung festival">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Tari Properti Kain</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc7681.jpg" data-full-webp="asset/web/hafc7681.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Sesi talkshow dan MC">
+            <picture>
+              <source srcset="asset/thumbs/hafc7681.webp" type="image/webp">
+              <img src="asset/thumbs/hafc7681.jpg" width="800" height="534" loading="lazy" decoding="async" alt="Dua pembawa acara berbincang dengan seorang narasumber di panggung">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Talkshow &amp; MC</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/dscf7552.jpg" data-full-webp="asset/web/dscf7552.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Penampilan vokal solo">
+            <picture>
+              <source srcset="asset/thumbs/dscf7552.webp" type="image/webp">
+              <img src="asset/thumbs/dscf7552.jpg" width="534" height="800" loading="lazy" decoding="async" alt="Penyanyi solo bergaun perak tampil di atas panggung">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Penampilan Vokal Solo</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc1036.jpg" data-full-webp="asset/web/hafc1036.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Pertunjukan tari anak">
+            <picture>
+              <source srcset="asset/thumbs/hafc1036.webp" type="image/webp">
+              <img src="asset/thumbs/hafc1036.jpg" width="800" height="534" loading="lazy" decoding="async" alt="Anak-anak menari dengan kostum berwarna cerah di panggung">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Pertunjukan Tari Anak</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="event" data-full="asset/web/hafc7815.jpg" data-full-webp="asset/web/hafc7815.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Foto tim produksi, frame alternatif">
+            <picture>
+              <source srcset="asset/thumbs/hafc7815.webp" type="image/webp">
+              <img src="asset/thumbs/hafc7815.jpg" width="800" height="534" loading="lazy" decoding="async" alt="Foto bersama tim produksi di panggung festival, pengambilan alternatif">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Event</span>
+              <span class="overlay-title">Tim Produksi — Frame Alternatif</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="product" data-full="asset/web/dscf4447.jpg" data-full-webp="asset/web/dscf4447.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Foto produk parfum Lab">
+            <picture>
+              <source srcset="asset/thumbs/dscf4447.webp" type="image/webp">
+              <img src="asset/thumbs/dscf4447.jpg" width="533" height="800" loading="lazy" decoding="async" alt="Foto produk botol dan kemasan eau de toilette Lab Bergamot di latar abu-abu">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Produk</span>
+              <span class="overlay-title">Lab Eau de Toilette — Foto Produk</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <figure class="portfolio-item reveal" data-category="food" data-full="asset/web/dscf4663.jpg" data-full-webp="asset/web/dscf4663.webp">
+          <button type="button" class="portfolio-btn" aria-label="Perbesar: Food photography low key">
+            <picture>
+              <source srcset="asset/thumbs/dscf4663.webp" type="image/webp">
+              <img src="asset/thumbs/dscf4663.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Potongan daging panggang berasap difoto dengan pencahayaan low key">
+            </picture>
+            <figcaption class="overlay">
+              <span class="overlay-tag">Makanan</span>
+              <span class="overlay-title">Food Photography — Low Key</span>
+            </figcaption>
+          </button>
+        </figure>
+      </div>
+
+      <p class="empty-state" id="emptyState" hidden>Belum ada karya di kategori ini.</p>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">05 — Contact</p>
+        <h2>Mari bekerja sama</h2>
+        <p class="section-sub">Terbuka untuk proyek dokumentasi acara, foto produk, dan kolaborasi kreatif.</p>
+      </div>
+
+      <div class="contact-grid">
+        <ul class="contact-list reveal">
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            </span>
+            <div>
+              <span class="contact-label">Email</span>
+              <a href="mailto:hanshendyanto1625@gmail.com">hanshendyanto1625@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+            </span>
+            <div>
+              <span class="contact-label">WhatsApp / Telepon</span>
+              <a href="https://wa.me/6287823528577" target="_blank" rel="noopener noreferrer">+62 878-2352-8577</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .5 1.4.94.44.44.72.83.94 1.4.17.44.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2a3.8 3.8 0 0 1-.94 1.4c-.44.44-.83.72-1.4.94-.44.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42a3.8 3.8 0 0 1-1.4-.94 3.8 3.8 0 0 1-.94-1.4c-.17-.44-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .94-1.4.44-.44.83-.72 1.4-.94.44-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-.9.04-1.4.2-1.7.32-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.12.3-.28.8-.32 1.7C3.35 8.9 3.34 9.3 3.34 12s0 3.1.08 4.4c.04.9.2 1.4.32 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.3.12.8.28 1.7.32 1.3.06 1.7.07 4.8.07s3.5 0 4.8-.07c.9-.04 1.4-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.12-.3.28-.8.32-1.7.06-1.3.07-1.7.07-4.4s0-3.1-.07-4.4c-.04-.9-.2-1.4-.32-1.7a2.8 2.8 0 0 0-.7-1.06 2.8 2.8 0 0 0-1.05-.7c-.3-.12-.8-.28-1.7-.32-1.3-.06-1.7-.07-4.8-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-3.1a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
+            </span>
+            <div>
+              <span class="contact-label">Instagram</span>
+              <a href="https://www.instagram.com/hans_hendyanto/" target="_blank" rel="noopener noreferrer">@hans_hendyanto</a>
+            </div>
+          </li>
+        </ul>
+
+        <form id="commentForm" class="comment-form reveal" novalidate>
+          <h3>Tinggalkan Pesan</h3>
+
+          <div class="field">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="nameError">
+            <p class="error" id="nameError" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="emailError">
+            <p class="error" id="emailError" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="5" required aria-describedby="messageError"></textarea>
+            <p class="error" id="messageError" role="alert" hidden></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          <p class="form-note">
+            Catatan: form ini belum terhubung ke server, jadi pesan hanya tersimpan
+            di browser ini. Untuk hal penting, silakan email atau WhatsApp langsung.
+          </p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="comments-wrap reveal" id="commentsWrap" hidden>
+        <h3>Pesan Tersimpan <span class="muted">(di browser ini)</span></h3>
+        <ul class="comments" id="commentsList"></ul>
+        <button type="button" class="btn btn-ghost btn-sm" id="clearComments">Hapus semua pesan</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2025</span> Hans Hendyanto. All rights reserved.</p>
+    <a href="#home" class="to-top">Kembali ke atas ↑</a>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Tampilan gambar besar" hidden>
+    <button type="button" class="lb-close" id="lbClose" aria-label="Tutup">&times;</button>
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Gambar sebelumnya">&#8249;</button>
+    <figure class="lb-figure">
+      <!-- no src attribute: an empty src resolves to the page URL and costs a request -->
+      <img id="lbImage" alt="">
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Gambar berikutnya">&#8250;</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
