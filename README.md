@@ -59,6 +59,36 @@ Copy an existing `<figure class="portfolio-item">` block in `index.html` and upd
   browser can reserve space and avoid layout shift
 - the `alt` text, the `aria-label` on the button, and the overlay tag/title
 
+## Motion
+
+The page has a layer of ambient and interactive motion. Everything here is
+decorative — the site reads identically with it all switched off.
+
+| Effect | Driven by |
+| --- | --- |
+| Drifting colour blobs behind the hero | CSS `@keyframes`, transform only |
+| Sheen across the name, blinking caret, spinning portrait ring, float | CSS `@keyframes` |
+| Scrolling specialties strip | CSS, two duplicate tracks so the loop is seamless |
+| Typewriter that cycles job titles | `script.js`, `#roleWord` |
+| Reading-progress bar and back-to-top button | `script.js`, one write per frame via `rAF` |
+| Stat roll-up | `script.js` + `IntersectionObserver` |
+| Cursor spotlight on cards, 3D tilt on gallery tiles | `script.js` writing CSS custom properties |
+| Staggered entrance when a gallery filter changes | CSS animation, replayed from `script.js` |
+
+Two constraints worth keeping in mind when editing:
+
+- **`prefers-reduced-motion: reduce` must stay honoured.** The media query at the
+  bottom of `style.css` stops the ambient loops and flattens the tilt, and
+  `script.js` checks the same query before typing, counting, or tracking the
+  pointer. The typewriter falls back to a static title so the sentence still reads.
+- **Pointer effects are gated behind `(hover: hover) and (pointer: fine)`** so
+  touch devices do not get a tilt they cannot control.
+
+Gallery figures carry both `.reveal` and `.portfolio-item`, and both want the
+`transform` property. They are composed in one place (`.portfolio-item.reveal`)
+— if you add another transform to those tiles, extend that rule rather than
+introducing a competing one, or the tilt will silently stop working.
+
 ## Notes
 
 - The contact form has no backend. Submissions are validated client-side and
@@ -66,6 +96,9 @@ Copy an existing `<figure class="portfolio-item">` block in `index.html` and upd
   anywhere, and Hans never receives them. The form says so, and lists the email
   and WhatsApp links as the real way to get in touch. Wiring this to a service
   such as Formspree or a serverless function would make it functional.
-- Respects `prefers-reduced-motion`: scroll reveals and transitions are disabled.
+- Respects `prefers-reduced-motion`: scroll reveals, ambient loops and the
+  pointer tilt are all disabled.
+- Social links live in the hero. Linktree (`linktr.ee/hans_hendyanto`) is listed
+  first and styled as a pill, since it is the hub for every other profile.
 - Keyboard support: the gallery tiles are buttons, and the lightbox handles
   `Esc` to close plus arrow keys to move between images.

@@ -23,9 +23,20 @@
 
   <link rel="preload" as="image" href="asset/web/foto-diri.webp" type="image/webp">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Scroll reveals start transparent and are shown by script.js. Without JS
+       nothing would ever appear, so opt the whole effect out up front. -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
   <a class="skip-link" href="#main">Lompat ke konten utama</a>
+
+  <!-- Reading progress for the whole page; width is driven from script.js -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <header class="site-header" id="siteHeader">
     <nav class="navbar" aria-label="Navigasi utama">
@@ -56,20 +67,30 @@
   <main id="main">
     <!-- ================= HERO ================= -->
     <section id="home" class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+      </div>
       <div class="hero-inner">
         <div class="hero-text">
           <p class="eyebrow reveal">Bandung, Indonesia</p>
           <h1 class="hero-name reveal">Hans<br>Hendyanto</h1>
           <p class="hero-role reveal">
-            <span class="chip">Computer Science Student</span>
-            <span class="chip">Photographer</span>
-            <span class="chip">Videographer</span>
+            <span class="role-prefix">Saya seorang</span>
+            <!-- The cycling word is decorative motion; screen readers get the
+                 complete, static list from .sr-only instead of a retyping string. -->
+            <span class="role-rotate" aria-hidden="true">
+              <span class="role-word" id="roleWord"></span><span class="role-caret"></span>
+            </span>
+            <span class="sr-only">
+              Photographer, Videographer, Audio Engineer, 3D Modeler, dan mahasiswa Ilmu Komputer.
+            </span>
           </p>
           <p class="hero-lede reveal">
-            Saya menangkap momen — panggung, produk, dan makanan — lalu merapikannya
-            lewat proses editing dan teknologi. Terbiasa bekerja di lapangan maupun
-            di balik layar produksi.
+            Saya menangkap momen indah seperti event, produk, dan makanan lalu merapikannya
+            lewat proses editing dan teknologi. Dapat membuat 3D modeling melalui aplikasi SketchUp. Terbiasa bekerja di lapangan maupun
+            di balik layar produksi. 
           </p>
 
           <div class="hero-actions reveal">
@@ -78,6 +99,16 @@
           </div>
 
           <ul class="social-links reveal" aria-label="Tautan media sosial">
+            <li>
+              <a class="is-hub" href="https://linktr.ee/hans_hendyanto" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7.4 4.6 12 9.2l4.6-4.6"/>
+                  <path d="M5.6 12.2h12.8"/>
+                  <path d="M12 9.2v10.2"/>
+                </svg>
+                <span>Linktree</span>
+              </a>
+            </li>
             <li>
               <a href="https://www.instagram.com/hans_hendyanto/" target="_blank" rel="noopener noreferrer">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .5 1.4.94.44.44.72.83.94 1.4.17.44.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2a3.8 3.8 0 0 1-.94 1.4c-.44.44-.83.72-1.4.94-.44.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42a3.8 3.8 0 0 1-1.4-.94 3.8 3.8 0 0 1-.94-1.4c-.17-.44-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .94-1.4.44-.44.83-.72 1.4-.94.44-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-.9.04-1.4.2-1.7.32-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.12.3-.28.8-.32 1.7C3.35 8.9 3.34 9.3 3.34 12s0 3.1.08 4.4c.04.9.2 1.4.32 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.3.12.8.28 1.7.32 1.3.06 1.7.07 4.8.07s3.5 0 4.8-.07c.9-.04 1.4-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.12-.3.28-.8.32-1.7.06-1.3.07-1.7.07-4.4s0-3.1-.07-4.4c-.04-.9-.2-1.4-.32-1.7a2.8 2.8 0 0 0-.7-1.06 2.8 2.8 0 0 0-1.05-.7c-.3-.12-.8-.28-1.7-.32-1.3-.06-1.7-.07-4.8-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-3.1a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
@@ -112,14 +143,40 @@
         </div>
 
         <div class="hero-portrait reveal">
-          <picture>
-            <source srcset="asset/web/foto-diri.webp" type="image/webp">
-            <img src="asset/web/foto-diri.jpg" width="640" height="640"
-                 alt="Foto potret Hans Hendyanto" class="profile-pic" fetchpriority="high" decoding="async">
-          </picture>
+          <div class="portrait-frame">
+            <span class="portrait-ring" aria-hidden="true"></span>
+            <picture>
+              <source srcset="asset/web/foto-diri.webp" type="image/webp">
+              <img src="asset/web/foto-diri.jpg" width="640" height="640"
+                   alt="Foto potret Hans Hendyanto" class="profile-pic" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Decorative scrolling strip of specialties. Duplicated track so the
+         translation can loop seamlessly; the copy is hidden from a11y tools. -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Event Photography</span><span class="marquee-dot">&bull;</span>
+        <span>Videography</span><span class="marquee-dot">&bull;</span>
+        <span>Foto Produk</span><span class="marquee-dot">&bull;</span>
+        <span>Food Photography</span><span class="marquee-dot">&bull;</span>
+        <span>3D Modeling</span><span class="marquee-dot">&bull;</span>
+        <span>Audio Engineering</span><span class="marquee-dot">&bull;</span>
+        <span>Penyiar Radio</span><span class="marquee-dot">&bull;</span>
+      </div>
+      <div class="marquee-track">
+        <span>Event Photography</span><span class="marquee-dot">&bull;</span>
+        <span>Videography</span><span class="marquee-dot">&bull;</span>
+        <span>Foto Produk</span><span class="marquee-dot">&bull;</span>
+        <span>Food Photography</span><span class="marquee-dot">&bull;</span>
+        <span>3D Modeling</span><span class="marquee-dot">&bull;</span>
+        <span>Audio Engineering</span><span class="marquee-dot">&bull;</span>
+        <span>Penyiar Radio</span><span class="marquee-dot">&bull;</span>
+      </div>
+    </div>
 
     <!-- ================= ABOUT ================= -->
     <section id="about" class="section">
@@ -144,17 +201,19 @@
           </p>
         </div>
 
+        <!-- data-count drives the roll-up animation; the text content is already
+             the final value so it stays correct with JS off or motion reduced. -->
         <ul class="stats reveal" aria-label="Ringkasan singkat">
           <li>
-            <span class="stat-num">3</span>
+            <span class="stat-num" data-count="3">3</span>
             <span class="stat-label">Bidang utama<br>Foto · Video · IT</span>
           </li>
           <li>
-            <span class="stat-num">10+</span>
+            <span class="stat-num" data-count="11" data-suffix="+">11+</span>
             <span class="stat-label">Karya<br>terdokumentasi</span>
           </li>
           <li>
-            <span class="stat-num">4</span>
+            <span class="stat-num" data-count="4">4</span>
             <span class="stat-label">Kategori<br>proyek</span>
           </li>
         </ul>
@@ -454,6 +513,19 @@
               <a href="https://www.instagram.com/hans_hendyanto/" target="_blank" rel="noopener noreferrer">@hans_hendyanto</a>
             </div>
           </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7.4 4.6 12 9.2l4.6-4.6"/>
+                <path d="M5.6 12.2h12.8"/>
+                <path d="M12 9.2v10.2"/>
+              </svg>
+            </span>
+            <div>
+              <span class="contact-label">Semua Tautan</span>
+              <a href="https://linktr.ee/hans_hendyanto" target="_blank" rel="noopener noreferrer">linktr.ee/hans_hendyanto</a>
+            </div>
+          </li>
         </ul>
 
         <form id="commentForm" class="comment-form reveal" novalidate>
@@ -498,6 +570,11 @@
     <p>&copy; <span id="year">2025</span> Hans Hendyanto. All rights reserved.</p>
     <a href="#home" class="to-top">Kembali ke atas ↑</a>
   </footer>
+
+  <!-- Floating back-to-top; revealed by script.js once past the hero -->
+  <button type="button" class="fab-top" id="fabTop" aria-label="Kembali ke atas halaman">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6.4 5.6 12.8 7 14.2l5-5 5 5 1.4-1.4L12 6.4Z"/></svg>
+  </button>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Tampilan gambar besar" hidden>
