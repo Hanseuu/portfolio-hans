@@ -11,9 +11,92 @@
   const prefersReducedMotion =
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   /* ---------------------------------------------------------------- Footer */
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* --------------------------------------------- Scroll progress + back-top */
+  const progress = $('#scrollProgress');
+  const fabTop   = $('#fabTop');
+
+  if (progress || fabTop) {
+    let queued = false;
+
+    const updateScrollUi = () => {
+      queued = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      if (progress) progress.style.width = pct.toFixed(2) + '%';
+      if (fabTop) fabTop.classList.toggle('is-shown', window.scrollY > window.innerHeight * 0.6);
+    };
+
+    // Coalesce scroll events into one write per frame.
+    const onScrollUi = () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(updateScrollUi);
+    };
+
+    updateScrollUi();
+    window.addEventListener('scroll', onScrollUi, { passive: true });
+    window.addEventListener('resize', onScrollUi, { passive: true });
+  }
+
+  if (fabTop) {
+    fabTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
+    });
+  }
+
+  /* ------------------------------------------------- Rotating role headline */
+  const roleWord = $('#roleWord');
+  if (roleWord) {
+    const roles = [
+      'Photographer',
+      'Videographer',
+      'Audio Engineer',
+      '3D Modeler',
+      'Mahasiswa Ilmu Komputer',
+    ];
+
+    if (prefersReducedMotion) {
+      // No typing effect; just show the first role so the sentence reads.
+      roleWord.textContent = roles[0];
+    } else {
+      const TYPE = 65, ERASE = 32, HOLD = 1500, GAP = 350;
+      let r = 0, chars = 0, erasing = false;
+
+      const tick = () => {
+        const word = roles[r];
+        roleWord.textContent = word.slice(0, chars);
+
+        let delay;
+        if (!erasing) {
+          if (chars < word.length) {
+            chars += 1;
+            delay = TYPE;
+          } else {
+            erasing = true;
+            delay = HOLD;
+          }
+        } else if (chars > 0) {
+          chars -= 1;
+          delay = ERASE;
+        } else {
+          erasing = false;
+          r = (r + 1) % roles.length;
+          delay = GAP;
+        }
+        window.setTimeout(tick, delay);
+      };
+      tick();
+    }
+  }
 
   /* ------------------------------------------------- Header scrolled state */
   const header = $('#siteHeader');
@@ -106,6 +189,54 @@
     });
   }
 
+  /* ------------------------------------------------------ Stat count-up roll */
+  const statNums = $$('.stat-num[data-count]');
+  if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window) {
+    const runCount = (el) => {
+      const target = Number(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      if (!Number.isFinite(target)) return;
+
+      const DURATION = 1100;
+      const start = performance.now();
+
+      const frame = (now) => {
+        const t = Math.min((now - start) / DURATION, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+        el.textContent = Math.round(target * eased) + suffix;
+        if (t < 1) window.requestAnimationFrame(frame);
+      };
+      window.requestAnimationFrame(frame);
+    };
+
+    const counter = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          runCount(entry.target);
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.6 }
+    );
+    statNums.forEach((el) => counter.observe(el));
+  }
+
+  /* ----------------------------------------------- Cursor spotlight on cards */
+  if (finePointer && !prefersReducedMotion) {
+    $$('.card').forEach((card) => {
+      card.addEventListener(
+        'pointermove',
+        (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        },
+        { passive: true }
+      );
+    });
+  }
+
   /* ---------------------------------------------------- Portfolio filtering */
   const grid       = $('#portfolioGrid');
   const filters    = $$('.filter');
@@ -117,10 +248,59 @@
     items.forEach((item) => {
       const match = value === 'all' || item.dataset.category === value;
       item.classList.toggle('is-hidden', !match);
-      if (match) shown += 1;
+
+      if (match) {
+        // Replay the entrance animation, staggered by position in the new set.
+        if (!prefersReducedMotion) {
+          item.classList.remove('is-entering');
+          void item.offsetWidth; // reflow, so the animation restarts
+          item.style.animationDelay = `${Math.min(shown, 9) * 45}ms`;
+          item.classList.add('is-entering');
+        }
+        shown += 1;
+      }
     });
     if (emptyState) emptyState.hidden = shown !== 0;
   };
+
+  // Drop the class once finished; its `both` fill mode would otherwise pin
+  // transform to none and cancel the pointer tilt.
+  items.forEach((item) => {
+    item.addEventListener('animationend', (e) => {
+      if (e.animationName === 'pop-in') {
+        item.classList.remove('is-entering');
+        item.style.animationDelay = '';
+      }
+    });
+  });
+
+  /* ------------------------------------------------- Pointer tilt on tiles */
+  if (finePointer && !prefersReducedMotion) {
+    const MAX_TILT = 6; // degrees — subtle, this is a photo grid not a toy
+
+    items.forEach((item) => {
+      item.addEventListener(
+        'pointermove',
+        (e) => {
+          const r = item.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;  // -0.5 .. 0.5
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          item.classList.add('is-tilting');
+          item.style.setProperty('--ry', `${(px * MAX_TILT * 2).toFixed(2)}deg`);
+          item.style.setProperty('--rx', `${(-py * MAX_TILT * 2).toFixed(2)}deg`);
+        },
+        { passive: true }
+      );
+
+      const reset = () => {
+        item.classList.remove('is-tilting'); // restore the eased transition
+        item.style.setProperty('--rx', '0deg');
+        item.style.setProperty('--ry', '0deg');
+      };
+      item.addEventListener('pointerleave', reset);
+      item.addEventListener('blur', reset, true);
+    });
+  }
 
   filters.forEach((btn) => {
     btn.addEventListener('click', () => {
